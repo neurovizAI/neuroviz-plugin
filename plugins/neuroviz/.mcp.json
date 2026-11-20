@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "neuroviz": {
+      "type": "http",
+      "url": "https://app.neuroviz.ai/mcp"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "neuroviz",
+  "version": "1.0.0",
+  "description": "Retouch jewelry and product photos, see pieces worn on a model, and make product videos, all from your own photos. Results show up in the chat.",
+  "author": {
+    "name": "NeuroViz",
+    "email": "support@neuroviz.ai",
+    "url": "https://neuroviz.ai"
+  },
+  "homepage": "https://neuroviz.ai",
+  "repository": "https://github.com/neurovizAI/neuroviz-plugin",
+  "license": "MIT",
+  "keywords": [
+    "jewelry",
+    "jewelry photography",
+    "product photos",
+    "photo retouching",
+    "virtual try-on",
+    "product video",
+    "ecommerce",
+    "marketplace listings"
+  ]
+}

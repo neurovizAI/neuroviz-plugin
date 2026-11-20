@@ -1,0 +1,129 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "neuroviz",
+  "version": "1.0.0",
+  "description": "Retouch jewelry and product photos, see pieces worn on a model, and make product videos, all from your own photos. Results show up in the chat.",
+  "author": {
+    "name": "NeuroViz",
+    "email": "support@neuroviz.ai",
+    "url": "https://neuroviz.ai"
+  },
+  "homepage": "https://neuroviz.ai",
+  "keywords": [
+    "jewelry",
+    "jewelry photography",
+    "product photos",
+    "photo retouching",
+    "virtual try-on",
+    "product video",
+    "ecommerce",
+    "marketplace listings"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "NeuroViz",
+        "shortDescription": "Jewelry photos, try-on, video",
+        "longDescription": "NeuroViz is a photo and video studio for jewelry. Attach a photo of your piece, say what you need, and NeuroViz does the job on your actual photo. It doesn't draw a new piece of jewelry from scratch.\n\nWhat you can ask for:\n- Retouching: clean up dust and glare, fix the light and get a clean background for your shop or marketplace listing. One retoucher keeps a good photo of a clean piece just as it is, one is made for worn pieces and rough phone photos, and one gives a richer look for ads and social posts.\n- Virtual try-on: see a ring on a hand, or earrings, a necklace, a bracelet or a watch on a model.\n- Styled scenes: put your piece in a styled setting for ads and social posts.\n- Product videos: a short turning clip for a product page, or a scene video with camera moves for Reels and ads.\n- Other products: clean marketplace photos for any product, clothing on a model, and removing things you don't want in a photo.\n\nHow it works:\nThe assistant picks the right NeuroViz tool for your photo, using our guide for each tool, and tells you what the job costs in credits before anything runs. When the result is ready, it shows up in the chat with a button to download it at full size.\n\nYou need a NeuroViz account. You sign in once when you connect it, and each job uses the credits in that account, the same ones you use at app.neuroviz.ai. In NeuroViz your photos and results stay private to your account, and we never use them to train AI models.\n\nWho it's for: jewelry makers and brands, Etsy, Amazon and Shopify sellers, resellers of estate and vintage pieces, and anyone who needs listing photos, model shots and videos without booking a studio.\n\nLimits: NeuroViz starts from a real product photo. It won't invent a product from a text description, and it isn't for portraits or photos of people without a product. Results are generated, so check the stones, engraving and other fine details before you publish.",
+        "developerName": "NeuroViz",
+        "category": "Creativity",
+        "capabilities": [
+          "Retouch jewelry and product photos",
+          "Virtual try-on on a model",
+          "Styled product scenes",
+          "Product videos from a photo",
+          "Results shown in the chat"
+        ],
+        "websiteURL": "https://neuroviz.ai",
+        "supportURL": "https://neuroviz.ai/help/",
+        "privacyPolicyURL": "https://neuroviz.ai/privacy-policy/",
+        "termsOfServiceURL": "https://neuroviz.ai/terms-of-service/",
+        "defaultPrompt": [
+          "Retouch this ring photo for my Etsy listing.",
+          "Show these earrings on a model.",
+          "Make a short product video from this photo."
+        ],
+        "brandColor": "#31587C",
+        "brandColorDark": "#1CA6AF",
+        "composerIcon": "./assets/icon.png",
+        "composerIconDark": "./assets/icon-dark.png",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo-dark.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Retouch a sharp studio photo of a clean ring for a listing. Checks that the job runs on NeuroViz with the attached photo, that the retoucher is chosen from its guide, that the cost is stated before running, and that the finished image appears in the chat.",
+              "prompt": "Retouch this ring photo so it's ready for my Etsy listing.",
+              "tools_triggered": "list_apps, get_app_guide, get_app, estimate_run_cost, run_app_with_photo, get_run, show_result",
+              "expected_behavior": "Picks Jewelry Retoucher Precision (sharp photo, clean piece) after reading its guide, states the credit cost from estimate_run_cost, runs it on the attached photo, polls get_run until SUCCESS, then shows the retouched ring in the chat with a full-size download button. It is the same ring, cleaned up: same stones, setting and metal colors.",
+              "file_attachment_urls": [
+                "https://app.neuroviz.ai/assets/wizard/samples/studio-ring.jpg"
+              ]
+            },
+            {
+              "description": "Clean up a dull phone photo. Checks that the retoucher is chosen by the condition of the photo: Precision keeps a photo as shot, Rescue is the one that repairs rough photos.",
+              "prompt": "This is a quick phone photo of my pendant. It's dull and the glass behind it is dusty. Can you clean it up and fix the light?",
+              "tools_triggered": "list_apps, get_app_guide, get_app, estimate_run_cost, run_app_with_photo, get_run, show_result",
+              "expected_behavior": "Reads the retoucher guides, picks Jewelry Retoucher Rescue because the photo is rough and says why in a sentence, states the cost, runs it on the attached photo, and shows the cleaned-up pendant in the chat.",
+              "file_attachment_urls": [
+                "https://app.neuroviz.ai/assets/wizard/samples/phone-pendant.jpg"
+              ]
+            },
+            {
+              "description": "Virtual try-on: show the user's own ring worn on a hand.",
+              "prompt": "Show this ring on a woman's hand.",
+              "tools_triggered": "list_apps, get_app_guide, get_app, estimate_run_cost, run_app_with_photo, get_run, show_result",
+              "expected_behavior": "Uses Rings Try On with the attached ring and the female hand option, states the cost, runs it, and shows the ring worn on a model's hand in the chat. The ring is the user's ring, not a newly drawn one.",
+              "file_attachment_urls": [
+                "https://app.neuroviz.ai/assets/wizard/samples/phone-ring.jpg"
+              ]
+            },
+            {
+              "description": "Make a short product video from one photo.",
+              "prompt": "Make a short video of this bangle turning, for my product page.",
+              "tools_triggered": "list_apps, get_app_guide, get_app, estimate_run_cost, run_app_with_photo, get_run, show_result",
+              "expected_behavior": "Picks All In One Video Suite (a listing clip from one photo), takes duration and resolution options from get_app, states the cost before running, keeps polling get_run while the video renders (this can take a few minutes), then shows a playable video in the chat.",
+              "file_attachment_urls": [
+                "https://app.neuroviz.ai/assets/wizard/samples/phone-bangle.jpg"
+              ]
+            },
+            {
+              "description": "Check the credit balance and price a job without running it.",
+              "prompt": "How many NeuroViz credits do I have left, and what would a 5-second video of this bangle cost? Don't make it yet.",
+              "tools_triggered": "get_balance, list_apps, get_app, estimate_run_cost",
+              "expected_behavior": "Reports the account's credit balance and the exact credit cost of the video from estimate_run_cost. No run is started and no credits are spent.",
+              "file_attachment_urls": [
+                "https://app.neuroviz.ai/assets/wizard/samples/phone-bangle.jpg"
+              ]
+            }
+          ],
+          "negative": [
+            {
+              "description": "A text-only request for a new jewelry picture. NeuroViz works on a photo of the user's own piece, so it should not start a run. The assistant can answer without NeuroViz, or ask for a photo of the piece if the user wants NeuroViz.",
+              "prompt": "Create a picture of a gold ring with a big emerald on a beach.",
+              "expected_behavior": "No NeuroViz run is started and no credits are spent."
+            },
+            {
+              "description": "A portrait retouch. NeuroViz retouchers are for product and jewelry photos, not people, so it should not run. Attach any selfie.",
+              "prompt": "Smooth the skin in my selfie and whiten my teeth.",
+              "expected_behavior": "No NeuroViz run is started and no credits are spent. If NeuroViz is mentioned, the reply says it works on product photos."
+            },
+            {
+              "description": "A request to buy credits in the chat. NeuroViz sells nothing in the chat and has no purchase tool, so it must not start a purchase or send a checkout link.",
+              "prompt": "Buy 1,000 more NeuroViz credits for me with my saved card.",
+              "expected_behavior": "No purchase and no checkout link. It can report the current balance with get_balance and say that credits are managed in the user's NeuroViz account."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "NeuroViz sells nothing in the chat. Jobs use credits the user already has in their NeuroViz account. If the balance is too low, the assistant says so and points to the user's NeuroViz account; the plugin never starts a purchase and never links to a checkout page."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "First release. Retouch jewelry and product photos, see pieces worn on a model, make styled scenes and product videos from your own photos, and see the results in the chat. Includes three skills that guide the assistant through retouching, try-on and video jobs."
+      }
+    }
+  }
+}

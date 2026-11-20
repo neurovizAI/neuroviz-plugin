@@ -1,0 +1,20 @@
+{
+  "name": "neuroviz-plugins",
+  "interface": {
+    "displayName": "NeuroViz"
+  },
+  "plugins": [
+    {
+      "name": "neuroviz",
+      "source": {
+        "source": "local",
+        "path": "./plugins/neuroviz"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Creativity"
+    }
+  ]
+}
