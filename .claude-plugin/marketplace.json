@@ -3,7 +3,7 @@
   "description": "NeuroViz for Claude: jewelry and product photo retouching, virtual try-on and product videos from your own photos.",
   "metadata": {
     "description": "NeuroViz for Claude: jewelry and product photo retouching, virtual try-on and product videos from your own photos.",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "owner": {
     "name": "NeuroViz",
@@ -14,7 +14,7 @@
       "name": "neuroviz",
       "source": "./plugins/neuroviz",
       "description": "Retouch jewelry and product photos, see pieces worn on a model, and make product videos, all from your own photos. Results show up in the chat.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "NeuroViz",
         "email": "support@neuroviz.ai"
